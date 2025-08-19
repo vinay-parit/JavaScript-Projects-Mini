@@ -31,9 +31,6 @@ let isDarkMode = true;
 
 
 
-
-
-
 sun.addEventListener("click", () => {
    isDarkMode = false;
   body.style.backgroundColor = "var(--Gray-50)";
@@ -79,14 +76,8 @@ input.addEventListener("keydown", (event) => {
     if (input.value.trim() === "") return;
 
     let circle = document.createElement("div");
+    circle.style.cursor = "pointer"
     circle.className = "circle";
-
-    let checkImg = document.createElement("img");
-    checkImg.src = "/images/icon-check.svg";
-    checkImg.alt = "Check";
-    checkImg.className = "check-icon"
-    circle.appendChild(checkImg)
-
 
     let todoItem = document.createElement("div");
     todoItem.className = "todoItem";
@@ -102,6 +93,26 @@ input.addEventListener("keydown", (event) => {
        todoItem.style.color = "black";
       
      }
+
+     circle.addEventListener("click", () =>{
+      if (!circle.querySelector(".check-icon")) {
+        let checkImg = document.createElement("img");
+        checkImg.src = "/images/icon-check.svg";
+        checkImg.alt = "check-icon";
+        checkImg.className = "check-icon";
+        circle.style.backgroundColor = "pink";
+        circle.appendChild(checkImg);
+         todoText.style.textDecoration = "line-through";
+         todoText.style.opacity = "0.8";
+      } else {
+        let checkIcon = circle.querySelector(".check-icon");
+        checkIcon.remove();
+         todoText.style.textDecoration = "none";
+         todoText.style.opacity = "1";
+      }
+     })
+
+
 
     todoItem.appendChild(circle);
     todoItem.appendChild(todoText);

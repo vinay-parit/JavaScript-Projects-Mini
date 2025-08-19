@@ -156,12 +156,13 @@ body {
   width: 20px;
     border: 1px solid var(--Purple-300);
   border-radius: 50%;
-
+  /* background-color: rgb(220, 58, 174); */
 }
 
 .circle > .check-icon{
-   width: 14px;
-  height: 14px;
+   width: 12px;
+  height: 12px;
+  margin: 3px 3px;
   object-fit: contain;  
-  /* background: crimson; */
+  
 }
