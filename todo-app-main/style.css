@@ -148,8 +148,16 @@ body {
   border-bottom: 1px solid var(--Gray-600);
   display: flex;
   gap: 1rem;
+  position: relative; /* required for positioning cross icon */
+  flex-wrap: wrap; 
 }
 
+.todoItem > span {
+  flex: 1;
+  word-wrap: break-word; 
+  word-break: break-word; 
+  white-space: normal; 
+}
 
 .todoItem > .circle {
   height: 20px;
@@ -165,4 +173,14 @@ body {
   margin: 3px 3px;
   object-fit: contain;  
   
+}
+
+.cross-icon{
+
+  position: absolute;
+  right: 1.5rem;
+  top: 35%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }

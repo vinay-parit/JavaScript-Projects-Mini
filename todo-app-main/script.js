@@ -103,7 +103,7 @@ input.addEventListener("keydown", (event) => {
         circle.style.backgroundColor = "pink";
         circle.appendChild(checkImg);
          todoText.style.textDecoration = "line-through";
-         todoText.style.opacity = "0.8";
+         todoText.style.opacity = "0.2";
       } else {
         let checkIcon = circle.querySelector(".check-icon");
         checkIcon.remove();
@@ -113,10 +113,32 @@ input.addEventListener("keydown", (event) => {
       }
      })
 
+     
+        let crossImg = document.createElement("img");
+        crossImg.src = "/images/icon-cross.svg";
+        crossImg.alt = "cross-icon";
+        crossImg.className = "cross-icon";
+        crossImg.style.display ="none";
+
+        crossImg.addEventListener("click", (e)=>{
+        e.stopPropagation();
+        todoItem.remove();  
+        })
+
+        todoItem.addEventListener("mouseenter",() => {
+          crossImg.style.display = "block"
+        })
+      
+        todoItem.addEventListener("mouseleave", () => {
+          crossImg.style.display = "none";
+        });
+
+    
 
 
     todoItem.appendChild(circle);
     todoItem.appendChild(todoText);
+    todoItem.appendChild(crossImg);
     todolist.appendChild(todoItem);
 
     input.value = "";
