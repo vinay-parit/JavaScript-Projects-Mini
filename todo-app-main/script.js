@@ -109,6 +109,7 @@ input.addEventListener("keydown", (event) => {
         checkIcon.remove();
          todoText.style.textDecoration = "none";
          todoText.style.opacity = "1";
+         circle.style.backgroundColor = "transparent"
       }
      })
 
