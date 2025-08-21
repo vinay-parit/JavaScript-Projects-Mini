@@ -5,10 +5,12 @@ let sun = document.querySelector(".sun");
 let moon = document.querySelector(".moon");
 let input = document.querySelector("#input");
 let todolist = document.querySelector(".todo-list");
+let counter = document.querySelector(".counter");
+let totalTodo = 0;
+let completTodo = 0;
 let isDarkMode = true;
 
-
-    // chatGpt code 
+// chatGpt code
 // sun.addEventListener("click", () => {
 //   body.classList.remove("dark-theme");
 //   body.classList.add("light-theme");
@@ -29,10 +31,8 @@ let isDarkMode = true;
 //   dark.style.display = "block";
 // });
 
-
-
 sun.addEventListener("click", () => {
-   isDarkMode = false;
+  isDarkMode = false;
   body.style.backgroundColor = "var(--Gray-50)";
   moon.style.display = "block";
   sun.style.display = "none";
@@ -45,15 +45,12 @@ sun.addEventListener("click", () => {
   let todoItems = document.querySelectorAll(".todoItem");
   todoItems.forEach((item) => {
     item.style.backgroundColor = "var(--Gray-50)";
-    item.style.color="black"
-
+    item.style.color = "black";
   });
-
-
 });
 
 moon.addEventListener("click", () => {
-   isDarkMode = true;
+  isDarkMode = true;
   body.style.backgroundColor = "var(--Navy-950)";
   sun.style.display = "block";
   moon.style.display = "none";
@@ -66,17 +63,27 @@ moon.addEventListener("click", () => {
   let todoItems = document.querySelectorAll(".todoItem");
   todoItems.forEach((item) => {
     item.style.backgroundColor = "var(--Navy-900)";
-    item.style.color="white"
+    item.style.color = "white";
   });
-
 });
+
+function updateCounter() {
+  let itemsLeft = totalTodo - completTodo;
+  let text = itemsLeft + "item";
+  if (itemsLeft !== 1) {
+    text += "s";
+  }
+  text += " left";
+
+  counter.textContent = text;
+}
 
 input.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     if (input.value.trim() === "") return;
 
     let circle = document.createElement("div");
-    circle.style.cursor = "pointer"
+    circle.style.cursor = "pointer";
     circle.className = "circle";
 
     let todoItem = document.createElement("div");
@@ -85,16 +92,18 @@ input.addEventListener("keydown", (event) => {
     let todoText = document.createElement("span");
     todoText.textContent = input.value;
 
-     if (isDarkMode) {
-       todoItem.style.backgroundColor = "var(--Navy-900)";
-       todoItem.style.color = "white";
-     } else {
-       todoItem.style.backgroundColor = "var(--Gray-50)";
-       todoItem.style.color = "black";
-      
-     }
+    if (isDarkMode) {
+      todoItem.style.backgroundColor = "var(--Navy-900)";
+      todoItem.style.color = "white";
+    } else {
+      todoItem.style.backgroundColor = "var(--Gray-50)";
+      todoItem.style.color = "black";
+    }
 
-     circle.addEventListener("click", () =>{
+    totalTodo++;
+    updateCounter();
+
+    circle.addEventListener("click", () => {
       if (!circle.querySelector(".check-icon")) {
         let checkImg = document.createElement("img");
         checkImg.src = "/images/icon-check.svg";
@@ -102,39 +111,45 @@ input.addEventListener("keydown", (event) => {
         checkImg.className = "check-icon";
         circle.style.backgroundColor = "pink";
         circle.appendChild(checkImg);
-         todoText.style.textDecoration = "line-through";
-         todoText.style.opacity = "0.2";
+        todoText.style.textDecoration = "line-through";
+        todoText.style.opacity = "0.2";
+
+        completTodo++;
       } else {
         let checkIcon = circle.querySelector(".check-icon");
         checkIcon.remove();
-         todoText.style.textDecoration = "none";
-         todoText.style.opacity = "1";
-         circle.style.backgroundColor = "transparent"
+        todoText.style.textDecoration = "none";
+        todoText.style.opacity = "1";
+        circle.style.backgroundColor = "transparent";
+
+        completTodo--;
       }
-     })
+      updateCounter();
+    });
 
-     
-        let crossImg = document.createElement("img");
-        crossImg.src = "/images/icon-cross.svg";
-        crossImg.alt = "cross-icon";
-        crossImg.className = "cross-icon";
-        crossImg.style.display ="none";
+    let crossImg = document.createElement("img");
+    crossImg.src = "/images/icon-cross.svg";
+    crossImg.alt = "cross-icon";
+    crossImg.className = "cross-icon";
+    crossImg.style.display = "none";
 
-        crossImg.addEventListener("click", (e)=>{
-        e.stopPropagation();
-        todoItem.remove();  
-        })
+    crossImg.addEventListener("click", (e) => {
+      e.stopPropagation();
+      totalTodo--;
+      if (circle.querySelector(".check-icon")) {
+        completTodo--;
+      }
+      todoItem.remove();
+      updateCounter();
+    });
 
-        todoItem.addEventListener("mouseenter",() => {
-          crossImg.style.display = "block"
-        })
-      
-        todoItem.addEventListener("mouseleave", () => {
-          crossImg.style.display = "none";
-        });
+    todoItem.addEventListener("mouseenter", () => {
+      crossImg.style.display = "block";
+    });
 
-    
-
+    todoItem.addEventListener("mouseleave", () => {
+      crossImg.style.display = "none";
+    });
 
     todoItem.appendChild(circle);
     todoItem.appendChild(todoText);
