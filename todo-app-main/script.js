@@ -6,6 +6,11 @@ let moon = document.querySelector(".moon");
 let input = document.querySelector("#input");
 let todolist = document.querySelector(".todo-list");
 let counter = document.querySelector(".counter");
+let content = document.querySelector(".content");
+let filter = document.querySelector(".filter");
+let ClearCompletedBtn = document.querySelector(".Clear-completed");
+let activeBtn = document.querySelector(".active")
+
 let totalTodo = 0;
 let completTodo = 0;
 let isDarkMode = true;
@@ -40,12 +45,16 @@ sun.addEventListener("click", () => {
   dark.style.display = "none";
   input.style.backgroundColor = "var(--Gray-50)";
   input.style.color = "var(--Navy-850)";
+  content.style.backgroundColor = "var(--Gray-50)";
+  counter.style.color = "var(--Navy-850)"
+
+
   // todoItem.style.backgroundColor = "var(--Gray-300)"
 
   let todoItems = document.querySelectorAll(".todoItem");
   todoItems.forEach((item) => {
     item.style.backgroundColor = "var(--Gray-50)";
-    item.style.color = "black";
+    item.style.color = "var(--Navy-850)";
   });
 });
 
@@ -58,6 +67,10 @@ moon.addEventListener("click", () => {
   dark.style.display = "block";
   input.style.backgroundColor = "var(--Navy-900)";
   input.style.color = "white";
+  content.style.backgroundColor = "var(--Navy-900)";
+  counter.style.color = "white";
+
+
   // todoItem.style.backgroundColor = "var(--Navy-900)";
 
   let todoItems = document.querySelectorAll(".todoItem");
@@ -69,7 +82,7 @@ moon.addEventListener("click", () => {
 
 function updateCounter() {
   let itemsLeft = totalTodo - completTodo;
-  let text = itemsLeft + "item";
+  let text = itemsLeft + " item";
   if (itemsLeft !== 1) {
     text += "s";
   }
@@ -97,7 +110,9 @@ input.addEventListener("keydown", (event) => {
       todoItem.style.color = "white";
     } else {
       todoItem.style.backgroundColor = "var(--Gray-50)";
-      todoItem.style.color = "black";
+      todoItem.style.color = "var(--Navy-850)";
+
+      
     }
 
     totalTodo++;
@@ -124,6 +139,7 @@ input.addEventListener("keydown", (event) => {
 
         completTodo--;
       }
+      
       updateCounter();
     });
 
@@ -150,6 +166,19 @@ input.addEventListener("keydown", (event) => {
     todoItem.addEventListener("mouseleave", () => {
       crossImg.style.display = "none";
     });
+
+    ClearCompletedBtn.addEventListener("click", ()=>{
+      if(circle.querySelector(".check-icon")){
+        todoItem.remove()
+      }
+    })
+
+    activeBtn.addEventListener("click", ()=>{
+       if(circle.querySelector(".check-icon")){
+       }
+
+    })
+
 
     todoItem.appendChild(circle);
     todoItem.appendChild(todoText);
