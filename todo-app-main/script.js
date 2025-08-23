@@ -10,6 +10,8 @@ let content = document.querySelector(".content");
 let filter = document.querySelector(".filter");
 let ClearCompletedBtn = document.querySelector(".Clear-completed");
 let activeBtn = document.querySelector(".active")
+let allBtn = document.querySelector(".all")
+let completedBtn = document.querySelector(".completed");
 
 let totalTodo = 0;
 let completTodo = 0;
@@ -45,8 +47,15 @@ sun.addEventListener("click", () => {
   dark.style.display = "none";
   input.style.backgroundColor = "var(--Gray-50)";
   input.style.color = "var(--Navy-850)";
+  todolist.style.boxShadow = "10px 20px 50px var(--Gray-300)";
+  content.style.boxShadow = "10px 20px 50px var(--Gray-300)";
   content.style.backgroundColor = "var(--Gray-50)";
   counter.style.color = "var(--Navy-850)"
+  allBtn.style.color = "var(--Navy-850)";
+  activeBtn.style.color = "var(--Navy-850)";
+  completedBtn.style.color = "var(--Navy-850)";
+  ClearCompletedBtn.style.color = "var(--Navy-850)";
+
 
 
   // todoItem.style.backgroundColor = "var(--Gray-300)"
@@ -66,9 +75,16 @@ moon.addEventListener("click", () => {
   light.style.display = "none";
   dark.style.display = "block";
   input.style.backgroundColor = "var(--Navy-900)";
-  input.style.color = "white";
+  input.style.color = "var(--Purple-100)";
+    todolist.style.boxShadow = "none";
+    content.style.boxShadow = "none";
   content.style.backgroundColor = "var(--Navy-900)";
-  counter.style.color = "white";
+  counter.style.color = "var(--Purple-300)";
+  allBtn.style.color = "var(--Purple-300)";
+  activeBtn.style.color = "var(--Purple-300)";
+  completedBtn.style.color = "var(--Purple-300)";
+  ClearCompletedBtn.style.color = "var(--Purple-300)";
+
 
 
   // todoItem.style.backgroundColor = "var(--Navy-900)";
@@ -76,7 +92,7 @@ moon.addEventListener("click", () => {
   let todoItems = document.querySelectorAll(".todoItem");
   todoItems.forEach((item) => {
     item.style.backgroundColor = "var(--Navy-900)";
-    item.style.color = "white";
+    item.style.color = "var(--Purple-300)";
   });
 });
 
@@ -100,7 +116,10 @@ input.addEventListener("keydown", (event) => {
     circle.className = "circle";
 
     let todoItem = document.createElement("div");
+    todoItem.setAttribute("data-completed", "false");
     todoItem.className = "todoItem";
+    content.style.display = "block"
+    content.style.display = "flex"
 
     let todoText = document.createElement("span");
     todoText.textContent = input.value;
@@ -120,6 +139,7 @@ input.addEventListener("keydown", (event) => {
 
     circle.addEventListener("click", () => {
       if (!circle.querySelector(".check-icon")) {
+
         let checkImg = document.createElement("img");
         checkImg.src = "/images/icon-check.svg";
         checkImg.alt = "check-icon";
@@ -127,7 +147,8 @@ input.addEventListener("keydown", (event) => {
         circle.style.backgroundColor = "pink";
         circle.appendChild(checkImg);
         todoText.style.textDecoration = "line-through";
-        todoText.style.opacity = "0.2";
+        todoText.style.opacity = "0.4";
+        todoItem.setAttribute("data-completed", "true");
 
         completTodo++;
       } else {
@@ -136,6 +157,7 @@ input.addEventListener("keydown", (event) => {
         todoText.style.textDecoration = "none";
         todoText.style.opacity = "1";
         circle.style.backgroundColor = "transparent";
+        todoItem.setAttribute("data-completed", "false");
 
         completTodo--;
       }
@@ -174,8 +196,11 @@ input.addEventListener("keydown", (event) => {
     })
 
     activeBtn.addEventListener("click", ()=>{
-       if(circle.querySelector(".check-icon")){
-       }
+       todoItem.filter((todo, index)=>{
+        if (circle.querySelector(".check-icon")) {
+          console.log(todoItem);
+        }
+       })
 
     })
 
@@ -187,4 +212,36 @@ input.addEventListener("keydown", (event) => {
 
     input.value = "";
   }
+});
+
+
+allBtn.addEventListener("click", () => {
+  let allTodos = document.querySelectorAll(".todoItem");
+  allTodos.forEach((todo) => {
+    todo.style.display = "flex";
+  });
+});
+
+
+activeBtn.addEventListener("click", () => {
+  let allTodos = document.querySelectorAll(".todoItem");
+  allTodos.forEach((todo) => {
+    if (todo.getAttribute("data-completed") === "true") {
+      todo.style.display = "none";
+    } else {
+      todo.style.display = "flex";
+    }
+  });
+});
+
+
+completedBtn.addEventListener("click", () => {
+  let allTodos = document.querySelectorAll(".todoItem");
+  allTodos.forEach((todo) => {
+    if (todo.getAttribute("data-completed") === "true") {
+      todo.style.display = "flex";
+    } else {
+      todo.style.display = "none";
+    }
+  });
 });

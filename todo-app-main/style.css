@@ -23,7 +23,7 @@
   --Gray-300: hsl(233, 11%, 84%);
   --Gray-600: hsl(236, 9%, 61%);
   --Navy-850: hsl(235, 19%, 35%);
-
+  --Grayish-Blue: hsl(229, 6%, 66%);
   /* font  */
   --Josefin-sans: "Josefin Sans", sans-serif;
 }
@@ -202,7 +202,7 @@ body {
   font-family: sans-serif;
   padding: 1rem;
   gap: 1rem;
-  /* display: none; */
+  display: none;
 }
 
 .counter{
@@ -229,4 +229,7 @@ body {
   border: none;
   font-family: var(--Josefin-sans);
 }
+
+
+
 
