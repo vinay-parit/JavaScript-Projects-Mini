@@ -122,6 +122,7 @@ input.addEventListener("keydown", (event) => {
     content.style.display = "flex"
 
     let todoText = document.createElement("span");
+        todoText.className = "todoText"
     todoText.textContent = input.value;
 
     if (isDarkMode) {
