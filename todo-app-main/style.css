@@ -243,6 +243,10 @@ body {
 }
 
 
+.mobile-filter {
+  display: none;
+}
+
 
 @media (max-width:375px) {
   body {
@@ -286,5 +290,39 @@ body {
 .todoText{
   font-size: 14px;
 }
-  
+
+
+  .all,.active,.completed  {
+    display: none;
+  }
+
+  .mobile-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    background-color: var(--Navy-900);
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  .mobile-filter > button {
+    background: none;
+    color: white;
+    border: none;
+    font-family: var(--Josefin-sans);
+    cursor: pointer;
+  }
+
+  body.light-theme .mobile-filter {
+    background-color: var(--Gray-50);
+  }
+
+  body.light-theme .mobile-filter button {
+    color: var(--Navy-850);
+  }
 }
+
+
+
+  
