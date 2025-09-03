@@ -291,35 +291,41 @@ body {
   font-size: 14px;
 }
 
+.content{
+  width: 20rem;
+  font-size: 14px;
 
-  .all,.active,.completed  {
+}
+
+
+
+  .filter >.all {
+    display: none;
+  }
+  .filter >.active {
+    display: none;
+  }
+  .filter >.completed {
     display: none;
   }
 
   .mobile-filter {
+    width: 20rem;
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
+    margin-left: 1.7rem;
     background-color: var(--Navy-900);
     padding: 1rem;
-    border-radius: 5px;
   }
 
   .mobile-filter > button {
-    background: none;
+    background: transparent;
     color: white;
     border: none;
     font-family: var(--Josefin-sans);
     cursor: pointer;
-  }
-
-  body.light-theme .mobile-filter {
-    background-color: var(--Gray-50);
-  }
-
-  body.light-theme .mobile-filter button {
-    color: var(--Navy-850);
   }
 }
 
