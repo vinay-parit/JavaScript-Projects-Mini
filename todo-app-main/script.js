@@ -12,6 +12,8 @@ let ClearCompletedBtn = document.querySelector(".Clear-completed");
 let activeBtn = document.querySelector(".active")
 let allBtn = document.querySelector(".all")
 let completedBtn = document.querySelector(".completed");
+let mobileFilter = document.querySelector(".mobile-filter");
+
 
 let totalTodo = 0;
 let completTodo = 0;
@@ -55,7 +57,7 @@ sun.addEventListener("click", () => {
   activeBtn.style.color = "var(--Navy-850)";
   completedBtn.style.color = "var(--Navy-850)";
   ClearCompletedBtn.style.color = "var(--Navy-850)";
-
+   mobileFilter.style.backgroundColor = "var(--Gray-50)";
 
 
   // todoItem.style.backgroundColor = "var(--Gray-300)"
@@ -84,7 +86,7 @@ moon.addEventListener("click", () => {
   activeBtn.style.color = "var(--Purple-300)";
   completedBtn.style.color = "var(--Purple-300)";
   ClearCompletedBtn.style.color = "var(--Purple-300)";
-
+    mobileFilter.style.backgroundColor = "var(--Navy-900)";
 
 
   // todoItem.style.backgroundColor = "var(--Navy-900)";
