@@ -271,6 +271,9 @@ body {
   .sun{
     width: 20px;
   }
+  .moon{
+    width: 20px;
+  }
 
   #input {
   width: 20rem;
@@ -294,7 +297,7 @@ body {
 .content{
   width: 20rem;
   font-size: 14px;
-  box-shadow: 0;
+  box-shadow: 0px;
 }
 
 
@@ -323,7 +326,7 @@ body {
 
   .mobile-filter > button {
     background: transparent;
-    color: var(--Navy-850);
+    color: var(--Purple-300);
     border: none;
     font-family: var(--Josefin-sans);
     cursor: pointer;

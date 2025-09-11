@@ -51,8 +51,8 @@ sun.addEventListener("click", () => {
   dark.style.display = "none";
   input.style.backgroundColor = "var(--Gray-50)";
   input.style.color = "var(--Navy-850)";
-  todolist.style.boxShadow = "10px 20px 50px var(--Gray-300)";
-  content.style.boxShadow = "10px 20px 50px var(--Gray-300)";
+  todolist.style.boxShadow = "5px 10px 25px var(--Gray-300)";
+  content.style.boxShadow = "5px 10px 25px var(--Gray-300)";
   content.style.backgroundColor = "var(--Gray-50)";
   counter.style.color = "var(--Navy-850)";
   allBtn.style.color = "var(--Navy-850)";
@@ -60,6 +60,10 @@ sun.addEventListener("click", () => {
   completedBtn.style.color = "var(--Navy-850)";
   ClearCompletedBtn.style.color = "var(--Navy-850)";
   mobileFilter.style.backgroundColor = "var(--Gray-50)";
+  mobileAllBtn.style.color = "var(--Navy-850)";   
+  mobileActiveBtn.style.color = "var(--Navy-850)";  
+  mobileCompletedBtn.style.color = "var(--Navy-850)";
+  mobileFilter.style.boxShadow = "5px 5px 20px 15px var(--Gray-300)";
 
   // todoItem.style.backgroundColor = "var(--Gray-300)"
 
@@ -88,6 +92,10 @@ moon.addEventListener("click", () => {
   completedBtn.style.color = "var(--Purple-300)";
   ClearCompletedBtn.style.color = "var(--Purple-300)";
   mobileFilter.style.backgroundColor = "var(--Navy-900)";
+  mobileAllBtn.style.color = "var( --Purple-300)";
+  mobileActiveBtn.style.color = "var( --Purple-300)";
+  mobileCompletedBtn.style.color = "var( --Purple-300)";
+  mobileFilter.style.boxShadow = "none"
 
   // todoItem.style.backgroundColor = "var(--Navy-900)";
 
