@@ -9,11 +9,13 @@ let counter = document.querySelector(".counter");
 let content = document.querySelector(".content");
 let filter = document.querySelector(".filter");
 let ClearCompletedBtn = document.querySelector(".Clear-completed");
-let activeBtn = document.querySelector(".active")
-let allBtn = document.querySelector(".all")
+let activeBtn = document.querySelector(".active");
+let allBtn = document.querySelector(".all");
 let completedBtn = document.querySelector(".completed");
 let mobileFilter = document.querySelector(".mobile-filter");
-
+let mobileAllBtn = document.querySelector(".mobile-filter .all");
+let mobileActiveBtn = document.querySelector(".mobile-filter .active");
+let mobileCompletedBtn = document.querySelector(".mobile-filter .completed");
 
 let totalTodo = 0;
 let completTodo = 0;
@@ -52,13 +54,12 @@ sun.addEventListener("click", () => {
   todolist.style.boxShadow = "10px 20px 50px var(--Gray-300)";
   content.style.boxShadow = "10px 20px 50px var(--Gray-300)";
   content.style.backgroundColor = "var(--Gray-50)";
-  counter.style.color = "var(--Navy-850)"
+  counter.style.color = "var(--Navy-850)";
   allBtn.style.color = "var(--Navy-850)";
   activeBtn.style.color = "var(--Navy-850)";
   completedBtn.style.color = "var(--Navy-850)";
   ClearCompletedBtn.style.color = "var(--Navy-850)";
-   mobileFilter.style.backgroundColor = "var(--Gray-50)";
-
+  mobileFilter.style.backgroundColor = "var(--Gray-50)";
 
   // todoItem.style.backgroundColor = "var(--Gray-300)"
 
@@ -78,16 +79,15 @@ moon.addEventListener("click", () => {
   dark.style.display = "block";
   input.style.backgroundColor = "var(--Navy-900)";
   input.style.color = "var(--Purple-100)";
-    todolist.style.boxShadow = "none";
-    content.style.boxShadow = "none";
+  todolist.style.boxShadow = "none";
+  content.style.boxShadow = "none";
   content.style.backgroundColor = "var(--Navy-900)";
   counter.style.color = "var(--Purple-300)";
   allBtn.style.color = "var(--Purple-300)";
   activeBtn.style.color = "var(--Purple-300)";
   completedBtn.style.color = "var(--Purple-300)";
   ClearCompletedBtn.style.color = "var(--Purple-300)";
-    mobileFilter.style.backgroundColor = "var(--Navy-900)";
-
+  mobileFilter.style.backgroundColor = "var(--Navy-900)";
 
   // todoItem.style.backgroundColor = "var(--Navy-900)";
 
@@ -120,11 +120,11 @@ input.addEventListener("keydown", (event) => {
     let todoItem = document.createElement("div");
     todoItem.setAttribute("data-completed", "false");
     todoItem.className = "todoItem";
-    content.style.display = "block"
-    content.style.display = "flex"
+    content.style.display = "block";
+    content.style.display = "flex";
 
     let todoText = document.createElement("span");
-        todoText.className = "todoText"
+    todoText.className = "todoText";
     todoText.textContent = input.value;
 
     if (isDarkMode) {
@@ -133,8 +133,6 @@ input.addEventListener("keydown", (event) => {
     } else {
       todoItem.style.backgroundColor = "var(--Gray-50)";
       todoItem.style.color = "var(--Navy-850)";
-
-      
     }
 
     totalTodo++;
@@ -142,7 +140,6 @@ input.addEventListener("keydown", (event) => {
 
     circle.addEventListener("click", () => {
       if (!circle.querySelector(".check-icon")) {
-
         let checkImg = document.createElement("img");
         checkImg.src = "/images/icon-check.svg";
         checkImg.alt = "check-icon";
@@ -164,7 +161,7 @@ input.addEventListener("keydown", (event) => {
 
         completTodo--;
       }
-      
+
       updateCounter();
     });
 
@@ -192,21 +189,19 @@ input.addEventListener("keydown", (event) => {
       crossImg.style.display = "none";
     });
 
-    ClearCompletedBtn.addEventListener("click", ()=>{
-      if(circle.querySelector(".check-icon")){
-        todoItem.remove()
+    ClearCompletedBtn.addEventListener("click", () => {
+      if (circle.querySelector(".check-icon")) {
+        todoItem.remove();
       }
-    })
+    });
 
-    activeBtn.addEventListener("click", ()=>{
-       todoItem.filter((todo, index)=>{
+    activeBtn.addEventListener("click", () => {
+      todoItem.filter((todo, index) => {
         if (circle.querySelector(".check-icon")) {
           console.log(todoItem);
         }
-       })
-
-    })
-
+      });
+    });
 
     todoItem.appendChild(circle);
     todoItem.appendChild(todoText);
@@ -217,14 +212,12 @@ input.addEventListener("keydown", (event) => {
   }
 });
 
-
 allBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");
   allTodos.forEach((todo) => {
     todo.style.display = "flex";
   });
 });
-
 
 activeBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");
@@ -237,8 +230,36 @@ activeBtn.addEventListener("click", () => {
   });
 });
 
-
 completedBtn.addEventListener("click", () => {
+  let allTodos = document.querySelectorAll(".todoItem");
+  allTodos.forEach((todo) => {
+    if (todo.getAttribute("data-completed") === "true") {
+      todo.style.display = "flex";
+    } else {
+      todo.style.display = "none";
+    }
+  });
+});
+
+mobileAllBtn.addEventListener("click", () => {
+  let allTodos = document.querySelectorAll(".todoItem");
+  allTodos.forEach((todo) => {
+    todo.style.display = "flex";
+  });
+});
+
+mobileActiveBtn.addEventListener("click", () => {
+  let allTodos = document.querySelectorAll(".todoItem");
+  allTodos.forEach((todo) => {
+    if (todo.getAttribute("data-completed") === "true") {
+      todo.style.display = "none";
+    } else {
+      todo.style.display = "flex";
+    }
+  });
+});
+
+mobileCompletedBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");
   allTodos.forEach((todo) => {
     if (todo.getAttribute("data-completed") === "true") {

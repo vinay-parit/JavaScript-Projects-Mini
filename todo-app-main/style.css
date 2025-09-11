@@ -294,7 +294,7 @@ body {
 .content{
   width: 20rem;
   font-size: 14px;
-
+  box-shadow: 0;
 }
 
 
@@ -316,16 +316,18 @@ body {
     gap: 1rem;
     margin-top: 1rem;
     margin-left: 1.7rem;
-    background-color: var(--Navy-900);
+    /* background-color: var(--Navy-900); */
+    background-color: crimson;
     padding: 1rem;
   }
 
   .mobile-filter > button {
     background: transparent;
-    color: white;
+    color: var(--Navy-850);
     border: none;
     font-family: var(--Josefin-sans);
     cursor: pointer;
+    /* box-shadow: ; */
   }
 }
 
