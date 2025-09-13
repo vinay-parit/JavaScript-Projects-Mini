@@ -17,6 +17,8 @@ let mobileAllBtn = document.querySelector(".mobile-filter .all");
 let mobileActiveBtn = document.querySelector(".mobile-filter .active");
 let mobileCompletedBtn = document.querySelector(".mobile-filter .completed");
 
+
+
 let totalTodo = 0;
 let completTodo = 0;
 let isDarkMode = true;
@@ -116,6 +118,7 @@ function updateCounter() {
 
   counter.textContent = text;
 }
+
 
 input.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
@@ -217,6 +220,7 @@ input.addEventListener("keydown", (event) => {
     todolist.appendChild(todoItem);
 
     input.value = "";
+    
   }
 });
 
@@ -248,6 +252,7 @@ completedBtn.addEventListener("click", () => {
     }
   });
 });
+
 
 mobileAllBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");

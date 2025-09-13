@@ -319,8 +319,7 @@ body {
     gap: 1rem;
     margin-top: 1rem;
     margin-left: 1.7rem;
-    /* background-color: var(--Navy-900); */
-    background-color: crimson;
+    background-color: var(--Navy-900);
     padding: 1rem;
   }
 
