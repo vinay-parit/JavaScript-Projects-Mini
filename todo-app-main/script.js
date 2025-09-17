@@ -1,3 +1,4 @@
+// ============ DOM Elements ============
 let body = document.querySelector("body");
 let dark = document.querySelector(".dark");
 let light = document.querySelector(".light");
@@ -17,33 +18,143 @@ let mobileAllBtn = document.querySelector(".mobile-filter .all");
 let mobileActiveBtn = document.querySelector(".mobile-filter .active");
 let mobileCompletedBtn = document.querySelector(".mobile-filter .completed");
 
-
-
+// ============ Variables ============
 let totalTodo = 0;
 let completTodo = 0;
 let isDarkMode = true;
 
-// chatGpt code
-// sun.addEventListener("click", () => {
-//   body.classList.remove("dark-theme");
-//   body.classList.add("light-theme");
+// ============ ✅ ADDED: Save Todos ============
+function saveTodosToLocalStorage() {
+  let allTodos = document.querySelectorAll(".todoItem");
+  let todos = [];
 
-//   sun.style.display = "none";
-//   moon.style.display = "block";
-//   light.style.display = "block";
-//   dark.style.display = "none";
-// });
+  allTodos.forEach((todo) => {
+    const text = todo.querySelector(".todoText").textContent;
+    const completed = todo.getAttribute("data-completed") === "true";
+    todos.push({ text, completed });
+  });
 
-// moon.addEventListener("click", () => {
-//   body.classList.remove("light-theme");
-//   body.classList.add("dark-theme");
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
 
-//   moon.style.display = "none";
-//   sun.style.display = "block";
-//   light.style.display = "none";
-//   dark.style.display = "block";
-// });
+// ============ ✅ ADDED: Load Todos ============
+function loadTodosFromLocalStorage() {
+  const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  savedTodos.forEach((todoObj) => {
+    createTodoItem(todoObj.text, todoObj.completed);
+  });
+}
 
+// ============ ✅ ADDED: Reusable Todo Creator ============
+function createTodoItem(text, completed = false) {
+  let circle = document.createElement("div");
+  circle.style.cursor = "pointer";
+  circle.className = "circle";
+
+  let todoItem = document.createElement("div");
+  todoItem.setAttribute("data-completed", completed ? "true" : "false");
+  todoItem.className = "todoItem";
+  content.style.display = "flex";
+
+  let todoText = document.createElement("span");
+  todoText.className = "todoText";
+  todoText.textContent = text;
+
+  if (isDarkMode) {
+    todoItem.style.backgroundColor = "var(--Navy-900)";
+    todoItem.style.color = "white";
+  } else {
+    todoItem.style.backgroundColor = "var(--Gray-50)";
+    todoItem.style.color = "var(--Navy-850)";
+  }
+
+  totalTodo++;
+  if (completed) completTodo++;
+  updateCounter();
+
+  if (completed) {
+    let checkImg = document.createElement("img");
+    checkImg.src = "/images/icon-check.svg";
+    checkImg.alt = "check-icon";
+    checkImg.className = "check-icon";
+    circle.style.backgroundColor = "pink";
+    circle.appendChild(checkImg);
+    todoText.style.textDecoration = "line-through";
+    todoText.style.opacity = "0.4";
+  }
+
+  circle.addEventListener("click", () => {
+    const isCompleted = circle.querySelector(".check-icon");
+    if (!isCompleted) {
+      let checkImg = document.createElement("img");
+      checkImg.src = "/images/icon-check.svg";
+      checkImg.alt = "check-icon";
+      checkImg.className = "check-icon";
+      circle.style.backgroundColor = "pink";
+      circle.appendChild(checkImg);
+      todoText.style.textDecoration = "line-through";
+      todoText.style.opacity = "0.4";
+      todoItem.setAttribute("data-completed", "true");
+      completTodo++;
+    } else {
+      let checkIcon = circle.querySelector(".check-icon");
+      checkIcon.remove();
+      todoText.style.textDecoration = "none";
+      todoText.style.opacity = "1";
+      circle.style.backgroundColor = "transparent";
+      todoItem.setAttribute("data-completed", "false");
+      completTodo--;
+    }
+    updateCounter();
+    saveTodosToLocalStorage(); // ✅ Save changes
+  });
+
+  let crossImg = document.createElement("img");
+  crossImg.src = "/images/icon-cross.svg";
+  crossImg.alt = "cross-icon";
+  crossImg.className = "cross-icon";
+  crossImg.style.display = "none";
+
+  crossImg.addEventListener("click", (e) => {
+    e.stopPropagation();
+    totalTodo--;
+    if (todoItem.getAttribute("data-completed") === "true") {
+      completTodo--;
+    }
+    todoItem.remove();
+    updateCounter();
+    saveTodosToLocalStorage(); // ✅ Save after delete
+  });
+
+  todoItem.addEventListener("mouseenter", () => {
+    crossImg.style.display = "block";
+  });
+
+  todoItem.addEventListener("mouseleave", () => {
+    crossImg.style.display = "none";
+  });
+
+  todoItem.appendChild(circle);
+  todoItem.appendChild(todoText);
+  todoItem.appendChild(crossImg);
+  todolist.appendChild(todoItem);
+
+  saveTodosToLocalStorage(); // ✅ Save on create
+}
+
+// ============ Counter ============
+function updateCounter() {
+  let itemsLeft = totalTodo - completTodo;
+  let text = itemsLeft + " item";
+  if (itemsLeft !== 1) {
+    text += "s";
+  }
+  text += " left";
+
+  counter.textContent = text;
+}
+
+// ============ Theme: Light / Dark ============
 sun.addEventListener("click", () => {
   isDarkMode = false;
   body.style.backgroundColor = "var(--Gray-50)";
@@ -62,12 +173,10 @@ sun.addEventListener("click", () => {
   completedBtn.style.color = "var(--Navy-850)";
   ClearCompletedBtn.style.color = "var(--Navy-850)";
   mobileFilter.style.backgroundColor = "var(--Gray-50)";
-  mobileAllBtn.style.color = "var(--Navy-850)";   
-  mobileActiveBtn.style.color = "var(--Navy-850)";  
+  mobileAllBtn.style.color = "var(--Navy-850)";
+  mobileActiveBtn.style.color = "var(--Navy-850)";
   mobileCompletedBtn.style.color = "var(--Navy-850)";
   mobileFilter.style.boxShadow = "5px 5px 20px 15px var(--Gray-300)";
-
-  // todoItem.style.backgroundColor = "var(--Gray-300)"
 
   let todoItems = document.querySelectorAll(".todoItem");
   todoItems.forEach((item) => {
@@ -97,9 +206,7 @@ moon.addEventListener("click", () => {
   mobileAllBtn.style.color = "var( --Purple-300)";
   mobileActiveBtn.style.color = "var( --Purple-300)";
   mobileCompletedBtn.style.color = "var( --Purple-300)";
-  mobileFilter.style.boxShadow = "none"
-
-  // todoItem.style.backgroundColor = "var(--Navy-900)";
+  mobileFilter.style.boxShadow = "none";
 
   let todoItems = document.querySelectorAll(".todoItem");
   todoItems.forEach((item) => {
@@ -108,122 +215,15 @@ moon.addEventListener("click", () => {
   });
 });
 
-function updateCounter() {
-  let itemsLeft = totalTodo - completTodo;
-  let text = itemsLeft + " item";
-  if (itemsLeft !== 1) {
-    text += "s";
-  }
-  text += " left";
-
-  counter.textContent = text;
-}
-
-
+// ============ ✅ Input Event Updated ============
 input.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    if (input.value.trim() === "") return;
-
-    let circle = document.createElement("div");
-    circle.style.cursor = "pointer";
-    circle.className = "circle";
-
-    let todoItem = document.createElement("div");
-    todoItem.setAttribute("data-completed", "false");
-    todoItem.className = "todoItem";
-    content.style.display = "block";
-    content.style.display = "flex";
-
-    let todoText = document.createElement("span");
-    todoText.className = "todoText";
-    todoText.textContent = input.value;
-
-    if (isDarkMode) {
-      todoItem.style.backgroundColor = "var(--Navy-900)";
-      todoItem.style.color = "white";
-    } else {
-      todoItem.style.backgroundColor = "var(--Gray-50)";
-      todoItem.style.color = "var(--Navy-850)";
-    }
-
-    totalTodo++;
-    updateCounter();
-
-    circle.addEventListener("click", () => {
-      if (!circle.querySelector(".check-icon")) {
-        let checkImg = document.createElement("img");
-        checkImg.src = "/images/icon-check.svg";
-        checkImg.alt = "check-icon";
-        checkImg.className = "check-icon";
-        circle.style.backgroundColor = "pink";
-        circle.appendChild(checkImg);
-        todoText.style.textDecoration = "line-through";
-        todoText.style.opacity = "0.4";
-        todoItem.setAttribute("data-completed", "true");
-
-        completTodo++;
-      } else {
-        let checkIcon = circle.querySelector(".check-icon");
-        checkIcon.remove();
-        todoText.style.textDecoration = "none";
-        todoText.style.opacity = "1";
-        circle.style.backgroundColor = "transparent";
-        todoItem.setAttribute("data-completed", "false");
-
-        completTodo--;
-      }
-
-      updateCounter();
-    });
-
-    let crossImg = document.createElement("img");
-    crossImg.src = "/images/icon-cross.svg";
-    crossImg.alt = "cross-icon";
-    crossImg.className = "cross-icon";
-    crossImg.style.display = "none";
-
-    crossImg.addEventListener("click", (e) => {
-      e.stopPropagation();
-      totalTodo--;
-      if (circle.querySelector(".check-icon")) {
-        completTodo--;
-      }
-      todoItem.remove();
-      updateCounter();
-    });
-
-    todoItem.addEventListener("mouseenter", () => {
-      crossImg.style.display = "block";
-    });
-
-    todoItem.addEventListener("mouseleave", () => {
-      crossImg.style.display = "none";
-    });
-
-    ClearCompletedBtn.addEventListener("click", () => {
-      if (circle.querySelector(".check-icon")) {
-        todoItem.remove();
-      }
-    });
-
-    activeBtn.addEventListener("click", () => {
-      todoItem.filter((todo, index) => {
-        if (circle.querySelector(".check-icon")) {
-          console.log(todoItem);
-        }
-      });
-    });
-
-    todoItem.appendChild(circle);
-    todoItem.appendChild(todoText);
-    todoItem.appendChild(crossImg);
-    todolist.appendChild(todoItem);
-
+  if (event.key === "Enter" && input.value.trim() !== "") {
+    createTodoItem(input.value, false);
     input.value = "";
-    
   }
 });
 
+// ============ Filter Buttons ============
 allBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");
   allTodos.forEach((todo) => {
@@ -253,7 +253,6 @@ completedBtn.addEventListener("click", () => {
   });
 });
 
-
 mobileAllBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");
   allTodos.forEach((todo) => {
@@ -282,3 +281,19 @@ mobileCompletedBtn.addEventListener("click", () => {
     }
   });
 });
+
+ClearCompletedBtn.addEventListener("click", () => {
+  let todos = document.querySelectorAll(".todoItem");
+  todos.forEach((todo) => {
+    if (todo.getAttribute("data-completed") === "true") {
+      todo.remove();
+      totalTodo--;
+      completTodo--;
+    }
+  });
+  updateCounter();
+  saveTodosToLocalStorage(); // ✅ Save after clearing
+});
+
+// ============ ✅ Load Todos on Page Load ============
+loadTodosFromLocalStorage();
