@@ -4,7 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- displays site properly based on user's device -->
-
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <link
       rel="icon"
       type="image/png"
@@ -19,10 +30,6 @@
   <body>
     <div class="main">
       <div class="head">
-        <div class="bgc-img">
-          <img src="/images/pattern-bg-desktop.png" alt="background" />
-        </div>
-
         <h2>IP Address Tracker</h2>
 
         <div class="input-text">
@@ -31,21 +38,35 @@
             type="text"
           />
           <div class="arrow">
-          <img src="/images/icon-arrow.svg" alt="icon-arrow">
+            <img src="/images/icon-arrow.svg" alt="icon-arrow" />
           </div>
         </div>
       </div>
-
-      IP Address Location Timezone UTC
-      <!-- add offset value dynamically using the API -->
-      ISP
+      <div class="tracker-parent">
+        <div class="tracker">
+          <div class="ip-parent">
+            <div class="ip">IP ADDRESS</div>
+            192
+          </div>
+          <hr />
+          <div class="location-parent">
+            <div class="location">LOCATION</div>
+            mumbai
+          </div>
+          <hr />
+          <div class="timezone-parent">
+            <div class="timezone">TIMEZONE</div>
+            utc-8:00
+          </div>
+          <hr />
+          <div class="ip-parent">
+            <div class="isp">ISP</div>
+            spaceX-starWars
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+    <div id="map"></div>
   </body>
 </html>

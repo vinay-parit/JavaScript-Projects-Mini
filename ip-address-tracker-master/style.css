@@ -1,67 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
-:root{
-   --Rubik:"Rubik";
-   --Gray-950: hsl(0, 0%, 17%);
-   --Gray-400: hsl(0, 0%, 58%);
-   --blue-500: blue;
+:root {
+  --Rubik: "Rubik";
+  --Gray-950: hsl(0, 0%, 17%);
+  --Gray-400: hsl(0, 0%, 58%);
+  --blue-500: blue;
 }
 
-
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.main{
-    height: 100%;
-    width: 100%;
+.main {
+  height: 100%;
+  width: 100%;
 }
 
-.bgc-img img{
-    width: 100%;
+.head{
+    background-image: url(/images/pattern-bg-desktop.png);
     height: 250px;
-}
-
-
-.head h2{
-    position: absolute;
-    font-family: var(--Rubik);
-    color: white;
-    top: 2rem;
-    left: 39rem;
-    font-size: 2.1rem;
-    font-weight: 500;
-}
-
-.input-text{
+    background-size: cover;       
+    background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
-    position: relative;
-    bottom: 10rem;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
 }
 
-.input-text input{
-    padding: 1rem 12rem;
-    border-bottom-left-radius: 12px;
-    border-top-left-radius: 12px;
-    border: none;
-    font-size: 18px;
-    
+
+.head h2 {
+  font-family: var(--Rubik);
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-top: 2rem;
+}
+
+.input-text {
+  display: flex;
+  justify-content: center;
+}
+
+.input-text input {
+  height: 3rem;
+  width: 34rem ;
+  padding-left: 1.5rem;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  border: none;
+  font-size: 18px;
 }
 
 .arrow {
-    background-color: black;
-    padding: 0px 18px;
-    display: flex;
-    align-items: center;
-    border-bottom-right-radius: 12px;
-    border-top-right-radius: 12px;
+    width: 3rem;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+}
 
+.tracker-parent{
+    display: flex;
+    justify-content: center;
+    position: relative;
 }
 
 
 
+.tracker{
+    width: 75%;
+    height: 150px; 
+    padding-top: 2rem; 
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: -4rem;
+    background-color: white;
+    z-index: 999;
+    font-family: var(--Rubik);
+    color: var(--Gray-400);
+}
 
+
+#map {
+  height: 500px;
+
+}
