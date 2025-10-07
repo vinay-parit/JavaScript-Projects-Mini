@@ -68,6 +68,7 @@
     display: flex;
     justify-content: center;
     position: relative;
+    width: 100%;
 }
 
 
@@ -77,17 +78,32 @@
     height: 150px; 
     padding-top: 2rem; 
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     position: absolute;
     top: -4rem;
     background-color: white;
     z-index: 999;
-    font-family: var(--Rubik);
-    color: var(--Gray-400);
+    border-radius: 15px;
+    
+}
+
+.ip-parent{
+  
+  font-family: var(--Rubik);
+  color: var(--Gray-400);
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  background-color: blue;
+}
+
+.ip{
+  font-weight: 700;
 }
 
 
-#map {
-  height: 500px;
 
+#map{
+
+  height: 500px;
 }
