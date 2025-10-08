@@ -52,6 +52,7 @@
   border-top-left-radius: 12px;
   border: none;
   font-size: 18px;
+  font-family: var(--Rubik);  
 }
 
 .arrow {
