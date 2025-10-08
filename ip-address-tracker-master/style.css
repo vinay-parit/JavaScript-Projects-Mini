@@ -78,7 +78,7 @@
     height: 150px; 
     padding-top: 2rem; 
     display: flex;
-    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
     position: absolute;
     top: -4rem;
     background-color: white;
@@ -88,20 +88,90 @@
 }
 
 .ip-parent{
-  
+  width: 18%;
   font-family: var(--Rubik);
-  color: var(--Gray-400);
   display: flex;
   flex-direction: column;
-  text-align: start;
-  background-color: blue;
+  /* background-color: blue; */
 }
 
 .ip{
+  font-size: 10px;
+  letter-spacing: 1px;
   font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+}
+
+.ip-parent p{
+  font-size: 25px;
 }
 
 
+.location-parent{
+  width: 18%;
+   font-family: var(--Rubik);
+  display: flex;
+  flex-direction: column;
+  /* background-color: blue; */
+}
+
+.location{
+   font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+}
+
+.location-parent p{
+  font-size: 25px;
+  
+}
+
+.timezone-parent{
+  width: 18%;
+   font-family: var(--Rubik);
+  /* background-color: blue; */
+}
+
+.timezone-parent p{
+  font-size: 25px;
+}
+
+.timezone{
+   font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+  
+}
+
+.isp-parent{
+  width: 18%;
+   font-family: var(--Rubik);
+   display: flex;
+  flex-direction: column;   
+  /* background-color: blue; */
+}
+
+.isp{
+   font-size: 10px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+}
+
+.isp-parent P{
+  font-size: 25px;
+}
+
+
+hr{
+  height: 5rem;
+}
 
 #map{
 
