@@ -175,7 +175,6 @@ hr{
 }
 
 #map{
-
   height: 500px;
 }
 
@@ -317,6 +316,161 @@ hr{
 }
 
 }
+
+
+@media (max-width:840px){
+
+   .head{
+    background-image: url(/images/pattern-bg-desktop.png);
+    height: 250px;
+    background-size: cover;       
+    background-repeat: no-repeat;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.head h2 {
+  font-family: var(--Rubik);
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  padding-top: 2rem;
+}
+
+.input-text input {
+  height: 3rem;
+  width: 25rem ;
+  padding-left: 1.5rem;
+  border-bottom-left-radius: 12px;
+  border-top-left-radius: 12px;
+  border: none;
+  font-size: 18px;
+  font-family: var(--Rubik);  
+}
+
+.arrow {
+  width: 3rem;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-right-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.tracker-parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+
+}
+
+.tracker{
+    width: 28rem ;
+    height: 130px; 
+    padding-top: 2rem; 
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    top: -4rem;
+    background-color: white;
+    z-index: 999;
+    border-radius: 15px;
+}
+
+.ip-parent{
+  width: 14%;
+  font-family: var(--Rubik);
+  display: flex;
+  flex-direction: column;
+  /* background-color: blue; */
+}
+
+.ip{
+  font-size: 8px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+}
+
+.ip-parent p{
+  font-size: 12px;
+}
+
+.location-parent{
+  width: 14%;
+   font-family: var(--Rubik);
+  display: flex;
+  flex-direction: column;
+  /* background-color: blue; */
+}
+
+.location{
+   font-size: 8px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+}
+
+.location-parent p{
+  font-size: 12px; 
+}
+
+.timezone-parent{
+  width: 14%;
+   font-family: var(--Rubik);
+  /* background-color: blue; */
+}
+
+.timezone{
+   font-size: 8px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+  
+}
+
+.timezone-parent p{
+  font-size: 12px;
+}
+
+.isp-parent{
+  width: 14%;
+   font-family: var(--Rubik);
+   display: flex;
+  flex-direction: column;   
+  /* background-color: blue; */
+}
+
+.isp{
+   font-size: 8px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--Gray-400);
+  padding-bottom: 1rem;
+}
+
+.isp-parent P{
+  font-size: 12px;
+}
+
+
+}
+
+
+
+
+
+
+
 
 /* ============== for mobile screen ============= */
 
@@ -486,5 +640,8 @@ hr{
   padding-bottom: 1rem;
 }
 
+#map{
+  height: 500px;
+}
 
 }
