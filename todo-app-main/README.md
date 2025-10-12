@@ -1,4 +1,4 @@
-# Frontend Mentor - four card
+# Frontend Mentor - Todo-app
 ## Welcome! 👋
 
 ### Links
