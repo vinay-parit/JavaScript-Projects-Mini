@@ -263,7 +263,7 @@ mobileAllBtn.addEventListener("click", () => {
 mobileActiveBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");
   allTodos.forEach((todo) => {
-    if (todo.getAttribute("data-completed") === "false") {
+    if (todo.getAttribute("data-completed") === "true") {
       todo.style.display = "none";
     } else {
       todo.style.display = "flex";
