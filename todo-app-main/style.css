@@ -95,7 +95,8 @@ body {
 }
 
 .heading {
-  color: white;
+  /* color: white; */
+  color: black;
   font-family: var(--Josefin-sans);
   font-weight: 700;
 }
