@@ -156,7 +156,8 @@ body {
   width: 100%;
   padding: 1.2rem 1rem 1.2rem .9rem;
   color: var(--Purple-300);
-  background-color: var(--Navy-900);
+  /* background-color: var(--Navy-900); */
+background-color: crimson;
   border-bottom: 1px solid var(--Gray-600);
   display: flex;
   gap: 1rem;
