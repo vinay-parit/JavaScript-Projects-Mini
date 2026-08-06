@@ -256,7 +256,7 @@ completedBtn.addEventListener("click", () => {
 mobileAllBtn.addEventListener("click", () => {
   let allTodos = document.querySelectorAll(".todoItem");
   allTodos.forEach((todo) => {
-    todo.style.display = "flex";
+    todo.style.display = "none";
   });
 });
 
