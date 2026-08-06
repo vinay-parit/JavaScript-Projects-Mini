@@ -248,7 +248,7 @@ completedBtn.addEventListener("click", () => {
     if (todo.getAttribute("data-completed") === "true") {
       todo.style.display = "flex";
     } else {
-      todo.style.display = "none";
+      todo.style.display = "flex";
     }
   });
 });
