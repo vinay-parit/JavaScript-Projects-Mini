@@ -219,7 +219,7 @@ moon.addEventListener("click", () => {
 input.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && input.value.trim() !== "") {
     createTodoItem(input.value, false);
-    input.value = "";
+    input.value = "jhdfd";
   }
 });
 
