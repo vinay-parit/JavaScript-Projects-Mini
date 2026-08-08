@@ -48,7 +48,7 @@ function getIPData(ip) {
       marker.bindPopup(`<b>${ip}</b><br>${city}, ${country}`).openPopup();
     })
     .catch((err) => {
-      alert("Invalid IP address or network issue.")
+      alert("Invalid IP address or network issue.");
       console.error(err);
     });
 }
