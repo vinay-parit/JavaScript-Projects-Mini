@@ -663,8 +663,7 @@ hr{
 
 .head h2 {
   font-family: var(--Rubik);
-  /* color: white; */
-  color: black;
+  color: white;
   font-size: 25px; 
   font-weight: 500;
   padding-top: 2rem;
