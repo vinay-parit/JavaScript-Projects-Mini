@@ -714,8 +714,7 @@ hr{
     align-items: center;
     position: absolute;
     top: -6rem;
-    /* background-color: white; */
-    background-color: aqua;
+    background-color: white;
     z-index: 999;
     border-radius: 15px;
 }
