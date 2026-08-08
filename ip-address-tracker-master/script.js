@@ -60,7 +60,7 @@ searchBtn.addEventListener("click", () => {
     getIPData(ip);
   } else {
     alert("Please enter an IP address or domain.");
-  }
+  
 });
 
 // OPTIONAL: load user's IP info on page load
