@@ -40,7 +40,7 @@ function getIPData(ip) {
       map.setView([lat, lng], 13);
 
       if (marker) {
-        marker.setLatLng([lat, ]);
+        marker.setLatLng([lat, lng]);
       } else {
         marker = L.marker([lat, lng]).addTo(map);
       }
