@@ -682,7 +682,8 @@ hr{
 
 .arrow {
     width: 2.5rem;
-  background-color: black;
+  /* background-color: black; */
+  background-color: bisque;
   display: flex;
   align-items: center;
   justify-content: center;
