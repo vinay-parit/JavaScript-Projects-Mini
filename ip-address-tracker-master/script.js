@@ -42,7 +42,7 @@ function getIPData(ip) {
       if (marker) {
         marker.setLatLng([lat, lng]);
       } else {
-        marker = L.marker([lat, lng]).addTo();
+        marker = L.marker([lat, lng]).addTo(map);
       }
 
       marker.bindPopup(`<b>${ip}</b><br>${city}, ${country}`).openPopup();
